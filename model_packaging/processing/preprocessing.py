@@ -1,6 +1,10 @@
 import tensorflow as tf
+import datetime
+from model_packaging.config import config
+
 
 class DataAugmentationLayer(tf.keras.layers.Layer):
+
     """
     Custom layer for data augmentation using TensorFlow.
     
@@ -89,16 +93,23 @@ class DataAugmentationLayer(tf.keras.layers.Layer):
 
 class ModelCallbacks:
     @staticmethod
-    def model_checkpoint(filepath):
+    def create_model_checkpoint(filepath):
         """
         Create a ModelCheckpoint callback.
 
         Args:
-            filepath (str): Path to save the best model.
+            PACKAGE_ROOT (str): Root directory of the package.
 
         Returns:
             tf.keras.callbacks.ModelCheckpoint: ModelCheckpoint callback object.
         """
+        # Define the directory where you want to save the model
+        
+
+        # Create a timestamp string using the current datetime
+        
+
+        # Create the ModelCheckpoint callback
         model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
             filepath=filepath,
             monitor='val_accuracy',
@@ -108,7 +119,7 @@ class ModelCallbacks:
             verbose=0
         )
         return model_checkpoint_callback
-
+    
     @staticmethod
     def early_stopping():
         """

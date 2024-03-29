@@ -4,36 +4,39 @@ from keras.layers import Dense, Flatten
 from keras.applications import ResNet50
 from model_packaging.config import config
 from model_packaging.processing.preprocessing import DataAugmentationLayer
+from keras import Model
 
 
-class CustomResNetModel(tf.keras.Model):
-    def __init__(self, num_classes):
-        super(CustomResNetModel, self).__init__()
-        # Data Augmentation Layer
-        self.data_augmentation = DataAugmentationLayer()
-        # Load ResNet50 base model without the top layer
-        self.resnet = ResNet50(input_shape=(224, 224, 3), include_top=False)
-        # Freeze all layers in the base model
-        for layer in self.resnet.layers:
-            layer.trainable = False
-        # Define the output layer for your specific classification task
-        self.flatten = Flatten()
-        self.output_layer = Dense(num_classes, activation="softmax", name="output_layer")
+def create_resnet_model(input_shape, num_classes, class_names):
+    """
+    Create a ResNet model with a custom output layer.
 
-    def call(self, inputs, training=False):
-        # Data augmentation
-        if training:
-            inputs = self.data_augmentation(inputs, training=training)
-        # Forward pass
-        x = self.resnet(inputs)
-        x = self.flatten(x)
-        output = self.output_layer(x)
-        return output
+    Args:
+        input_shape (tuple): Input shape of the images (e.g., (224, 224, 3)).
+        num_classes (int): Number of output classes.
+        class_names (list): List of class names.
 
-# Instantiate the model
-model = CustomResNetModel(num_classes=len(config.CLASS_NAMES))
+    Returns:
+        tf.keras.Model: The ResNet model with a custom output layer.
+    """
+    # Load pre-trained ResNet50 model without top layer
+    resnet = ResNet50(input_shape=input_shape, include_top=False)
 
-# Summary of the model architecture
-model.build(input_shape=(None, 224, 224, 3))  # Manually build the model to specify input shape
+    # Freeze all layers in the base ResNet model
+    for layer in resnet.layers:
+        layer.trainable = False
+
+    # Flatten the output of ResNet
+    x = Flatten()(resnet.output)
+    
+    # Create custom output layer
+    output_layer = Dense(num_classes, activation="softmax", name="output_layer")(x)
+
+    # Combine ResNet base model and custom output layer
+    model = Model(resnet.input, output_layer, name="RESNET_MODEL")
+
+    return model
+
+
 
 

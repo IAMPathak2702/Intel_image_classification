@@ -24,6 +24,7 @@ def load_dataset(filename:str, prefetch:bool=False, batch_size:int=32):
                 seed=42,
                 batch_size=batch_size
             ).prefetch(tf.data.AUTOTUNE)
+            return _data
         else:
             _data = tf.keras.preprocessing.image_dataset_from_directory(
                 filepath,
