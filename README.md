@@ -17,7 +17,9 @@ The project aims to develop a deep learning model for image classification using
 Overall, the project aims to demonstrate the process of building, training, and deploying a deep learning model for image classification tasks using state-of-the-art techniques and best practices in machine learning engineering.
 
 
-DESCRIPTION = '''The project "Intel Image Classification" is a comprehensive demonstration of MLOps practices and tools. It encompasses the development of a deep learning model for image classification using TensorFlow and Keras, specifically based on the ResNet50 architecture.
+## DESCRIPTION = 
+```
+The project "Intel Image Classification" is a comprehensive demonstration of MLOps practices and tools. It encompasses the development of a deep learning model for image classification using TensorFlow and Keras, specifically based on the ResNet50 architecture.
 
 In addition to model development, this project focuses on the complete lifecycle management of the model through MLOps practices. The model is packaged using setuptools, facilitating easy distribution and deployment. Continuous integration and deployment (CI/CD) pipelines are established using Jenkins, ensuring automated testing and deployment of new model versions.
 
@@ -25,7 +27,8 @@ For model monitoring and observability, Grafana is integrated to visualize key p
 
 Furthermore, the project showcases user interface (UI) implementations for interacting with the model. Streamlit is utilized to create interactive web applications for model demonstration and exploration, allowing users to upload images and receive predictions from the model in real-time. FastAPI is employed to develop a robust and scalable API endpoint for serving model predictions, enabling seamless integration with other systems and services.
 
-By incorporating these components, the "Intel Image Classification" project demonstrates a holistic approach to MLOps, encompassing model development, packaging, deployment, monitoring, and user interface development, showcasing proficiency in modern MLOps practices and tools.'''
+By incorporating these components, the "Intel Image Classification" project demonstrates a holistic approach to MLOps, encompassing model development, packaging, deployment, monitoring, and user interface development, showcasing proficiency in modern MLOps practices and tools.
+```
 
 
 
