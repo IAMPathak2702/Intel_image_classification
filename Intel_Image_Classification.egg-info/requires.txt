@@ -1,0 +1,8 @@
+keras
+matplotlib==3.8.3
+Pillow==10.2.0
+pytest==8.1.1
+setuptools==68.2.2
+tensorflow
+wheel
+numpy
