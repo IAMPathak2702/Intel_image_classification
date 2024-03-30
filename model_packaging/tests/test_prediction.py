@@ -1,8 +1,8 @@
 import pytest
 import tensorflow as tf
-from model_packaging.config import config
-from model_packaging.processing.data_handeling import prepare_image, load_pipeline
-from model_packaging.predict import generate_predictions
+from model_packaging.prediction_model.config import config
+from model_packaging.prediction_model.processing.data_handeling import prepare_image, load_pipeline
+from model_packaging.prediction_model.predict import generate_predictions
 import warnings
 
 def pytest_configure(config):
