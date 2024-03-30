@@ -1,9 +1,6 @@
 import tensorflow as tf
-from model_packaging.processing.data_handeling import load_dataset, load_pipeline
+from model_packaging.processing.data_handeling import load_dataset, load_pipeline, prepare_image
 from model_packaging.config import config
-
-
-model = load_pipeline(config.MODEL_NAME)
 
 def evaluate_model(model, test_dataset):
     """
@@ -24,12 +21,6 @@ def evaluate_model(model, test_dataset):
 
     return loss, accuracy
 
-# Load the test dataset
-test_dataset = load_dataset(config.TEST_FILE, prefetch=True, batch_size=32)  # Assuming you have a function to load your test dataset
-
-# Evaluate the model
-evaluate_model(model, test_dataset)
-
 def generate_predictions(model, dataset):
     """
     Generate predictions using the trained model on the given dataset.
@@ -46,8 +37,12 @@ def generate_predictions(model, dataset):
     
     return predictions
 
+if __name__ == '__main__':
+    # Load the model
+    model = load_pipeline(config.SAVE_MODEL_PATH)
 
+    # Load the test dataset
+    test_dataset = load_dataset(config.EVAL_FILE, prefetch=True, batch_size=32)  
 
-
-if __name__=='__main__':
-    generate_predictions()
+    # Evaluate the model
+    evaluate_model(model, test_dataset)

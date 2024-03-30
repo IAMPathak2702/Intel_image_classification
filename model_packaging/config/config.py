@@ -14,12 +14,13 @@ TEST_FILE = os.path.join(DATAPATH, "testdata")
 # Using datetime to create a unique timestamp for the model directory
 
 
-timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
 
     
 
 # Define the path to save the trained model
-SAVE_MODEL_PATH = os.path.join(PACKAGE_ROOT, 'model', f"Model_{timestamp}")
+SAVE_MODEL_PATH = os.path.join(PACKAGE_ROOT, 'model', "ResNetModel")
+
 
 # Define the name of the model file
 MODEL_NAME = 'classification.pkl'

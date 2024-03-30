@@ -1,6 +1,9 @@
 import os
 import tensorflow as tf
 from model_packaging.config import config
+from PIL import Image
+import random
+import matplotlib.image as mpimg
 
 def load_dataset(filename:str, prefetch:bool=False, batch_size:int=32):
     """
@@ -86,3 +89,43 @@ def load_pipeline(model_name=config.MODEL_NAME):
 
 # 2. Saving model
 # save_model(my_model, "my_model")
+
+
+
+def prepare_image(image_path):
+    """
+    Load and preprocess an image for prediction.
+
+    Args:
+        image_path (str): Path to the folder containing image files.
+
+    Returns:
+        tf.Tensor: Preprocessed image tensor.
+    """
+    # List all files in the folder
+    files = os.listdir(image_path)
+    
+    # Filter out non-image files (e.g., directories)
+    image_files = [file for file in files if file.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
+    
+    # Pick a random image file
+    random_image_file = random.choice(image_files)
+    
+    # Construct the full path to the randomly selected image file
+    random_image_path = os.path.join(image_path, random_image_file)
+    
+    # Load the image using PIL
+    image = mpimg.imread(random_image_path)
+    
+    image = tf.image.resize(image, size=(224, 224))
+
+    # Resize the image to 224x224
+    
+    
+    # Convert the image to a TensorFlow tensor
+    image_tensor = tf.convert_to_tensor(image)
+    # Expand dimensions to add a batch dimension
+    image_tensor = tf.expand_dims(image_tensor, axis=0)
+ 
+    
+    return image_tensor

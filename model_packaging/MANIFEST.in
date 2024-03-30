@@ -1,0 +1,13 @@
+include *.txt
+include *.md 
+include *.py
+recursive-include ./model_packaging/*
+
+include model_packaging/data/*.JPG
+include model_packaging/trained_models/*.keras
+include model_packaging/processing/*.py
+incude model_packaging/VERSION
+include ./tests/*
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
