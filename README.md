@@ -34,26 +34,34 @@ Overall, the project aims to demonstrate the process of building, training, and 
 
 # Directory path
 ```
-model_packaging
-    ├───config
-    ├───data
-    │   ├───evaldata
-    │   │   ├───buildings
-    │   │   ├───forest
-    │   │   ├───glacier
-    │   │   ├───mountain
-    │   │   ├───sea
-    │   │   └───street
-    │   ├───testdata
-    │   └───traindata
-    │       ├───buildings
-    │       ├───forest
-    │       ├───glacier
-    │       ├───mountain
-    │       ├───sea
-    │       └───street
-    ├───model
-    └───processing
+C:.
+├───config
+│   └───__pycache__
+├───data
+│   ├───evaldata
+│   │   ├───buildings
+│   │   ├───forest
+│   │   ├───glacier
+│   │   ├───mountain
+│   │   ├───sea
+│   │   └───street
+│   ├───testdata
+│   └───traindata
+│       ├───buildings
+│       ├───forest
+│       ├───glacier
+│       ├───mountain
+│       ├───sea
+│       └───street
+├───model
+│   ├───Model_2024-03-29_20-38-1
+│   │   ├───assets
+│   │   └───variables
+│   └───ResNetModel
+│       ├───assets
+│       └───variables
+└───processing
+    └───__pycache__
 ```
 
 # Model Layer
